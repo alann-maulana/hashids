@@ -1,9 +1,13 @@
-name: hashids
+name: hashids2
 version: 1.0.0
-author: Iwan Sapoetra <isapoetra@gmail.com>
-description:  "Generate YouTube-like ids from numbers. Use Hashids when you do not want to expose your database ids to the user."
-homepage:
+authors: 
+- Iwan Sapoetra <isapoetra@gmail.com>
+- Olexandr Leuschenko <olexa.le@gmail.com>
+description: Hashids is small library to generate YouTube-like ids from numbers. Use Hashids when you do not want to expose your database ids to the user.
+repository: https://github.com/olexale/hashids
 environment:
-  sdk: '<2.0.0'
+  sdk: ">=2.1.0 <3.0.0"
+
 dev_dependencies:
-  test: "^0.12.34"
+  test: '>=0.12.42 <2.0.0'
+  test_coverage: ^0.2.0

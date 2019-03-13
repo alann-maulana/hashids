@@ -1,8 +1,8 @@
-import 'package:hashids/hashids.dart';
+import 'package:hashids2/hashids.dart';
 import 'package:test/test.dart';
 
-defaultParamsHexTest() {
-  final hashids = new HashIds();
+void defaultParamsHexTest() {
+  final hashids = HashIds();
 
   final map = {
     'wpVL4j9g': 'deadbeef',
@@ -21,13 +21,13 @@ defaultParamsHexTest() {
     for (final id in map.keys) {
       final hex = map[id];
 
-      test("should encode '0x${hex.toUpperCase()}' to '${id}'", () {
+      test("should encode '0x${hex.toUpperCase()}' to '$id'", () {
         expect(id, hashids.encodeHex(hex));
       });
 
       test(
-          "should encode '0x${hex
-          .toUpperCase()}' to '${id}' and decode back correctly", () {
+          "should encode '0x${hex.toUpperCase()}' to '$id' and decode back correctly",
+          () {
         final encodedId = hashids.encodeHex(hex);
         final decodedHex = hashids.decodeHex(encodedId);
 

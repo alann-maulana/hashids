@@ -1,9 +1,9 @@
-import 'package:hashids/hashids.dart';
+import 'package:hashids2/hashids.dart';
 import 'package:test/test.dart';
 
 void customParamsHexTest() {
   const minLength = 30;
-  var hashids = new HashIds(
+  final hashids = HashIds(
       'this is my salt', minLength, 'xzal86grmb4jhysfoqp3we7291kuct5iv0nd');
 
   final map = {
@@ -13,32 +13,30 @@ void customParamsHexTest() {
     '1nvlml93k3066oas3l9lr1wn1k67dy': '507f1f77bcf86cd799439011',
     'mgyband33ye3c6jj16yq1jayh6krqjbo': 'f00000fddddddeeeee4444444ababab',
     '9mnwgllqg1q2tdo63yya35a9ukgl6bbn6qn8':
-    'abcdef123456abcdef123456abcdef123456',
+        'abcdef123456abcdef123456abcdef123456',
     'edjrkn9m6o69s0ewnq5lqanqsmk6loayorlohwd963r53e63xmml29':
-    'f000000000000000000000000000000000000000000000000000f',
+        'f000000000000000000000000000000000000000000000000000f',
     'grekpy53r2pjxwyjkl9aw0k3t5la1b8d5r1ex9bgeqmy93eata0eq0':
-    'fffffffffffffffffffffffffffffffffffffffffffffffffffff'
+        'fffffffffffffffffffffffffffffffffffffffffffffffffffff'
   };
   group('encodeHex/decodeHex using custom params', () {
     for (var id in map.keys) {
-      var hex = map[id];
+      final hex = map[id];
 
       test("should encode '0x${hex.toUpperCase()}' to '$id'", () {
         expect(id, equals(hashids.encodeHex(hex)));
       });
 
       test(
-          "should encode '0x${hex
-              .toUpperCase()}' to '$id' and decode back correctly", () {
-        var encodedId = hashids.encodeHex(hex);
-        var decodedHex = hashids.decodeHex(encodedId);
+          "should encode '0x${hex.toUpperCase()}' to '$id' and decode back correctly",
+          () {
+        final encodedId = hashids.encodeHex(hex);
+        final decodedHex = hashids.decodeHex(encodedId);
         expect(hex.toLowerCase(), decodedHex);
       });
 
-      test("id length should be at least $minLength", () {
-        expect(hashids
-            .encodeHex(hex)
-            .length, greaterThanOrEqualTo(minLength));
+      test('id length should be at least $minLength', () {
+        expect(hashids.encodeHex(hex).length, greaterThanOrEqualTo(minLength));
       });
     }
   });

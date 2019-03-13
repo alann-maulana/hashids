@@ -1,9 +1,9 @@
-import 'package:hashids/hashids.dart';
+import 'package:hashids2/hashids.dart';
 import 'package:test/test.dart';
 
 void customSaltTest() {
-  final testSalt = (salt) {
-    final hashIds = new HashIds(salt);
+  final testSalt = (String salt) {
+    final hashIds = HashIds(salt);
     final numbers = [1, 2, 3];
 
     final id = hashIds.encode(numbers);
@@ -25,12 +25,12 @@ void customSaltTest() {
       testSalt('this is my salt');
     });
 
-    test("should work with a really long salt", () {
+    test('should work with a really long salt', () {
       testSalt(
           'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"~!@#\$%^&*()-_=+\\|\'";:/?.>,<{[}]');
     });
 
-    test("should work with a weird salt", () {
+    test('should work with a weird salt', () {
       testSalt('"~!@#\$%^&*()-_=+\\|\'";:/?.>,<{[}]');
     });
   });

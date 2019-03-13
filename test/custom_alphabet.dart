@@ -1,13 +1,13 @@
-import 'package:hashids/hashids.dart';
+import 'package:hashids2/hashids.dart';
 import 'package:test/test.dart';
 
 void customAlphabetTest() {
-  final testAlphabet = (alphabet) {
-    var hashids = new HashIds('', 0, alphabet);
-    var numbers = [1, 2, 3];
+  final testAlphabet = (String alphabet) {
+    final hashids = HashIds('', 0, alphabet);
+    final numbers = [1, 2, 3];
 
-    var id = hashids.encode(numbers);
-    var decodedNumbers = hashids.decode(id);
+    final id = hashids.encode(numbers);
+    final decodedNumbers = hashids.decode(id);
 
     expect(decodedNumbers, equals(numbers));
   };

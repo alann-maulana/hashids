@@ -1,9 +1,9 @@
-import 'package:hashids/hashids.dart';
+import 'package:hashids2/hashids.dart';
 import 'package:test/test.dart';
 
-customParamsTest() {
-  final minLength = 30;
-  final hashids = new HashIds(
+void customParamsTest() {
+  const minLength = 30;
+  final hashids = HashIds(
       'this is my salt', minLength, 'xzal86grmb4jhysfoqp3we7291kuct5iv0nd');
 
   final map = {
@@ -18,12 +18,42 @@ customParamsTest() {
     '1q3y98ln48w96kpo0wgk314w5mak2d': [9007199254740991],
     'op7qrcdc3cgc2c0cbcrcoc5clce4d6': [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
     '5430bd2jo0lxyfkfjfyojej5adqdy4': [10000000000, 0, 0, 0, 999999999999999],
-    'aa5kow86ano1pt3e1aqm239awkt9pk380w9l3q6': [9007199254740991, 9007199254740991, 9007199254740991],
-    'mmmykr5nuaabgwnohmml6dakt00jmo3ainnpy2mk': [1000000001, 1000000002, 1000000003, 1000000004, 1000000005],
-    'w1hwinuwt1cbs6xwzafmhdinuotpcosrxaz0fahl': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    'aa5kow86ano1pt3e1aqm239awkt9pk380w9l3q6': [
+      9007199254740991,
+      9007199254740991,
+      9007199254740991
+    ],
+    'mmmykr5nuaabgwnohmml6dakt00jmo3ainnpy2mk': [
+      1000000001,
+      1000000002,
+      1000000003,
+      1000000004,
+      1000000005
+    ],
+    'w1hwinuwt1cbs6xwzafmhdinuotpcosrxaz0fahl': [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ]
   };
-  group('encode/decode using custom params', ()
-  {
+  group('encode/decode using custom params', () {
     for (final id in map.keys) {
       final numbers = map[id];
 
@@ -42,10 +72,8 @@ customParamsTest() {
         expect(numbers, decodedNumbers);
       });
 
-      test("id length should be at least $minLength", () {
-        expect(hashids
-            .encode(numbers)
-            .length, greaterThanOrEqualTo(minLength));
+      test('id length should be at least $minLength', () {
+        expect(hashids.encode(numbers).length, greaterThanOrEqualTo(minLength));
       });
     }
   });

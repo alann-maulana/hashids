@@ -1,4 +1,5 @@
 # Hashids.dart
+[![Build Status](https://travis-ci.org/olexale/hashids.svg?branch=master)](https://travis-ci.org/olexale/hashids)
 
 A small Dart class to generate YouTube-like hashes from one or many numbers.
 

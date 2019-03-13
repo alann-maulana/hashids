@@ -40,9 +40,9 @@ final fromString = hashids.encode('42');
 #### Decrypting
 ```dart
 final hashids = HashIds();
-final number = hashids.decode(fromNumber); // 42
-final list = hashids.encode([fromList); // [1,2,3]
-final string = hashids.encode(fromString); // 42
+final number = hashids.decode(fromNumber); // [42]
+final list = hashids.decode(fromList); // [1,2,3]
+final string = hashids.decode(fromString); // [42]
 ```
 
 ## License

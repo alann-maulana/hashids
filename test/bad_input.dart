@@ -5,7 +5,7 @@ void badInputTest() {
   group('bad input', () {
     test('should throw an error when small alphabet', () {
       try {
-        HashIds('', 0, '1234567890');
+        HashIds(alphabet: '1234567890');
       } catch (e) {
         expect(1, 1);
       }
@@ -13,7 +13,7 @@ void badInputTest() {
 
     test('should throw an error when alphabet has spaces', () {
       try {
-        HashIds('', 0, 'a cdefghijklmnopqrstuvwxyz');
+        HashIds(alphabet: 'a cdefghijklmnopqrstuvwxyz');
       } catch (e) {
         expect(1, 1);
       }

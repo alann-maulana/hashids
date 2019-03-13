@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void customSaltTest() {
   final testSalt = (String salt) {
-    final hashIds = HashIds(salt);
+    final hashIds = HashIds(salt: salt);
     final numbers = [1, 2, 3];
 
     final id = hashIds.encode(numbers);

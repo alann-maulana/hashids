@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void minLengthTest() {
   group('min length', () {
     final testMinLength = (int minLength) {
-      final hashids = HashIds('', minLength);
+      final hashids = HashIds(minHashLength: minLength);
       final numbers = [1, 2, 3];
 
       final id = hashids.encode(numbers);

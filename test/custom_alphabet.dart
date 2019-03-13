@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void customAlphabetTest() {
   final testAlphabet = (String alphabet) {
-    final hashids = HashIds('', 0, alphabet);
+    final hashids = HashIds(alphabet: alphabet);
     final numbers = [1, 2, 3];
 
     final id = hashids.encode(numbers);

@@ -4,7 +4,9 @@ import 'package:test/test.dart';
 void customParamsHexTest() {
   const minLength = 30;
   final hashids = HashIds(
-      'this is my salt', minLength, 'xzal86grmb4jhysfoqp3we7291kuct5iv0nd');
+      salt: 'this is my salt',
+      minHashLength: minLength,
+      alphabet: 'xzal86grmb4jhysfoqp3we7291kuct5iv0nd');
 
   final map = {
     '0dbq3jwa8p4b3gk6gb8bv21goerm96': 'deadbeef',

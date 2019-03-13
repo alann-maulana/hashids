@@ -4,7 +4,9 @@ import 'package:test/test.dart';
 void customParamsTest() {
   const minLength = 30;
   final hashids = HashIds(
-      'this is my salt', minLength, 'xzal86grmb4jhysfoqp3we7291kuct5iv0nd');
+      salt: 'this is my salt',
+      minHashLength: minLength,
+      alphabet: 'xzal86grmb4jhysfoqp3we7291kuct5iv0nd');
 
   final map = {
     'nej1m3d5a6yn875e7gr9kbwpqol02q': [0],

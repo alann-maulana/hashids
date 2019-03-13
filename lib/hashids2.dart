@@ -2,9 +2,9 @@ import 'dart:core';
 
 class HashIds {
   HashIds(
-      [String salt = DEFAULT_SALT,
+      {String salt = DEFAULT_SALT,
       int minHashLength = DEFAULT_MIN_HASH_LENGTH,
-      String alphabet = DEFAULT_ALPHABET]) {
+      String alphabet = DEFAULT_ALPHABET}) {
     this.salt = salt != null ? salt : DEFAULT_SALT;
     this.minHashLength =
         minHashLength > 0 ? minHashLength : DEFAULT_MIN_HASH_LENGTH;

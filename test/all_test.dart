@@ -6,10 +6,8 @@ import 'custom_salt.dart';
 import 'default_params.dart';
 import 'default_params_hex.dart';
 import 'encode_types.dart';
-import 'sample.dart';
 
 void main() {
-  sampleTest();
   badInputTest();
   customSaltTest();
   customAlphabetTest();

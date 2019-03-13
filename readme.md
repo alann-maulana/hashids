@@ -27,7 +27,7 @@ All (long) integers need to be greater than or equal to zero.
 Add to the `pubspec.yaml`
 ```
 dependencies:y
-    hashids2: ^1.0.0
+    hashids2: ^1.0.1
 ```
 
 #### Encrypting

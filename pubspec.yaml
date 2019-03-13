@@ -4,7 +4,7 @@ authors:
 - Iwan Sapoetra <isapoetra@gmail.com>
 - Olexandr Leuschenko <olexa.le@gmail.com>
 description: Hashids is small library to generate YouTube-like ids from numbers. Use Hashids when you do not want to expose your database ids to the user.
-repository: https://github.com/olexale/hashids
+homepage: https://github.com/olexale/hashids
 environment:
   sdk: ">=2.1.0 <3.0.0"
 

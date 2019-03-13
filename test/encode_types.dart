@@ -1,4 +1,4 @@
-import 'package:hashids2/hashids.dart';
+import 'package:hashids2/hashids2.dart';
 import 'package:test/test.dart';
 
 void encodeTypesTest() {

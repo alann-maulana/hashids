@@ -196,15 +196,6 @@ class HashIds {
     return result.toString();
   }
 
-  static int checkedCast(int value) {
-    final int result = value;
-    if (result != value) {
-      // don't use checkArgument here, to avoid boxing
-      throw 'Out of range: $value';
-    }
-    return result;
-  }
-
   /* Private methods */
 
   String _encode(List<int> numbers) {
@@ -363,14 +354,5 @@ class HashIds {
     }
 
     return number;
-  }
-
-  ///
-  /// Get Hashid algorithm version.
-  ///
-  /// @return Hashids algorithm version implemented.
-  ///
-  String getVersion() {
-    return '1.0.0';
   }
 }

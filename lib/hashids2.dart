@@ -1,5 +1,16 @@
 import 'dart:core';
 
+/// A Dart class to generate YouTube-like hashes from one or many numbers.
+/// {@tool sample}
+///
+/// The simplest use case:
+///
+/// ```dart
+/// final hashids = HashIds();
+/// final fromNumber = hashids.encode(42);
+/// final number = hashids.decode(fromNumber); // [42]
+/// ```
+/// {@end-tool}
 class HashIds {
   HashIds(
       {String salt = DEFAULT_SALT,
@@ -94,6 +105,7 @@ class HashIds {
   String seps;
   String guards;
 
+  /// Encodes int, String (with int), or list of ints
   String encode(dynamic number) {
     if (number is int) {
       return encodeInt(number);
@@ -107,21 +119,23 @@ class HashIds {
     return '';
   }
 
+  ///
+  /// Encode single int
+  ///
   String encodeInt(int number) {
     return encodeList([number]);
   }
 
+  ///
+  /// Encode string with number
+  ///
   String encodeString(String number) {
     final parsed = int.tryParse(number) ?? -1;
     return encodeList([parsed]);
   }
 
   ///
-  /// Encode numbers to string
-  ///
-  /// @param numbers
-  ///         the numbers to encode
-  /// @return the encoded string
+  /// Encode list of numbers
   ///
   String encodeList(List<int> numbers) {
     if (numbers?.isEmpty ?? true) {
@@ -139,6 +153,7 @@ class HashIds {
     return _encode(numbers);
   }
 
+  /// Decodes hasn into list of ints
   List<int> decode(String hash) {
     if (hash.isEmpty) {
       return [];
@@ -156,10 +171,6 @@ class HashIds {
 
   ///
   /// Encode hex to string
-  ///
-  /// @param hex
-  ///          the hex to encode
-  /// @return the encoded string
   ///
   String encodeHex(String hex) {
     final List<int> result = [];
@@ -180,10 +191,6 @@ class HashIds {
 
   ///
   /// Decode string to numbers
-  ///
-  /// @param hash
-  ///          the encoded string
-  /// @return decoded numbers
   ///
   String decodeHex(String hash) {
     var result = '';

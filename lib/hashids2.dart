@@ -133,7 +133,7 @@ class HashIds {
         return '';
       }
       if (number > MAX_NUMBER) {
-        throw 'number can not be greater than $MAX_NUMBER';
+        throw ArgumentError('number can not be greater than $MAX_NUMBER');
       }
     }
     return _encode(numbers);

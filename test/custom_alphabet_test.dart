@@ -9,7 +9,7 @@ void main() {
     final id = hashids.encode(numbers);
     final decodedNumbers = hashids.decode(id);
 
-    expect(decodedNumbers, equals(numbers));
+    expect(decodedNumbers, numbers);
   };
   group('Custom Alphabet', () {
     test('should work with the worst alphabet', () {
@@ -35,6 +35,12 @@ void main() {
 
     test('should work with a weird alphabet', () {
       testAlphabet('~!@#\$%^&*()-_=+\\|\'' '";:/?.>,<{[}]');
+    });
+
+    test('returns empty when id is not from alphabet', () {
+      final hashids = HashIds(alphabet: 'cCsSfFhHuUiItT01');
+      final id = hashids.decode('aWs');
+      expect(id, <int>[]);
     });
   });
 }

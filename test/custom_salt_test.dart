@@ -1,7 +1,7 @@
 import 'package:hashids2/hashids2.dart';
 import 'package:test/test.dart';
 
-void customSaltTest() {
+void main() {
   final testSalt = (String salt) {
     final hashIds = HashIds(salt: salt);
     final numbers = [1, 2, 3];

@@ -1,7 +1,7 @@
 import 'package:hashids2/hashids2.dart';
 import 'package:test/test.dart';
 
-void badInputTest() {
+void main() {
   group('bad input', () {
     test('should throw an error when small alphabet', () {
       try {

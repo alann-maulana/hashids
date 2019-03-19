@@ -1,7 +1,7 @@
 import 'package:hashids2/hashids2.dart';
 import 'package:test/test.dart';
 
-void customAlphabetTest() {
+void main() {
   final testAlphabet = (String alphabet) {
     final hashids = HashIds(alphabet: alphabet);
     final numbers = [1, 2, 3];

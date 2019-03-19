@@ -1,7 +1,7 @@
 import 'package:hashids2/hashids2.dart';
 import 'package:test/test.dart';
 
-void encodeTypesTest() {
+void main() {
   final testParams = (dynamic numbers) {
     final hashids = HashIds();
 

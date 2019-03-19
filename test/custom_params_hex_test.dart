@@ -1,7 +1,7 @@
 import 'package:hashids2/hashids2.dart';
 import 'package:test/test.dart';
 
-void customParamsHexTest() {
+void main() {
   const minLength = 30;
   final hashids = HashIds(
       salt: 'this is my salt',

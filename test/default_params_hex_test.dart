@@ -1,7 +1,7 @@
 import 'package:hashids2/hashids2.dart';
 import 'package:test/test.dart';
 
-void defaultParamsHexTest() {
+void main() {
   final hashids = HashIds();
 
   final map = {

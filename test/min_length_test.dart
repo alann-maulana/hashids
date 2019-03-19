@@ -1,7 +1,7 @@
 import 'package:hashids2/hashids2.dart';
 import 'package:test/test.dart';
 
-void minLengthTest() {
+void main() {
   group('min length', () {
     final testMinLength = (int minLength) {
       final hashids = HashIds(minHashLength: minLength);

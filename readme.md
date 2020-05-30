@@ -24,11 +24,7 @@ All (long) integers need to be greater than or equal to zero.
 ## Usage
 
 #### Import the package
-Add to the `pubspec.yaml`
-```
-dependencies:y
-    hashids2: ^1.0.1
-```
+Follow instructions from [Pub](https://pub.dev/packages/hashids2#-installing-tab-).
 
 #### Encrypting
 ```dart

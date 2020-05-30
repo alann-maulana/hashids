@@ -9,6 +9,6 @@ install:
 script:
   - bash pub get; pub run test_coverage
 after_success:
-  coveralls-lcov --repo-token $COVERALLS_TOKEN coverage/lcov.info
+  - coveralls-lcov --repo-token $COVERALLS_TOKEN coverage/lcov.info
   on:
     branch: master

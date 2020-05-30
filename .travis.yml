@@ -4,10 +4,11 @@ dart:
 branches:
   only: [master]
 install:
+  - sudo apt-get install -y lcov
   - gem install coveralls-lcov
-deploy:
-  provider: script
-  script: bash pub get;pub run test_coverage;coveralls-lcov --repo-token $COVERALLS_TOKEN coverage/lcov.info
+script:
+  - bash pub get; pub run test_coverage
+after_success:
+  coveralls-lcov --repo-token $COVERALLS_TOKEN coverage/lcov.info
   on:
     branch: master
-

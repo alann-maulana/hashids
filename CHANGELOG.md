@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3
+
+* Fix the original LICENSE as all hashids must be available under MIT
+
 ## 1.0.2
 
 * Docuemntation added

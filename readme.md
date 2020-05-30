@@ -46,4 +46,4 @@ final string = hashids.decode(fromString); // [42]
 ```
 
 ## License
-See the `LICENSE` file.
+MIT License. See the LICENSE file. You can use Hashids in open source projects and commercial products. Don't break the Internet. Kthxbye.

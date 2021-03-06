@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0
+
+* Migration to null safety
+
 ## 1.0.3+1
 
 * Improve pub points (by @sidrao2006)

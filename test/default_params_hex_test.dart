@@ -19,7 +19,7 @@ void main() {
 
   group('encodeHex/decodeHex using default params', () {
     for (final id in map.keys) {
-      final hex = map[id];
+      final hex = map[id]!;
 
       test("should encode '0x${hex.toUpperCase()}' to '$id'", () {
         expect(id, hashids.encodeHex(hex));

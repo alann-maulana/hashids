@@ -13,10 +13,9 @@ import 'dart:core';
 /// {@end-tool}
 class HashIds {
   HashIds(
-      {String salt = DEFAULT_SALT,
+      {this.salt = DEFAULT_SALT,
       int minHashLength = DEFAULT_MIN_HASH_LENGTH,
       String alphabet = DEFAULT_ALPHABET}) {
-    this.salt = salt != null ? salt : DEFAULT_SALT;
     this.minHashLength =
         minHashLength > 0 ? minHashLength : DEFAULT_MIN_HASH_LENGTH;
 
@@ -27,13 +26,13 @@ class HashIds {
       }
     }
 
-    alphabet = uniqueAlphabet.toString();
+    String alpha = uniqueAlphabet.toString();
 
-    if (alphabet.length < MIN_ALPHABET_LENGTH) {
+    if (alpha.length < MIN_ALPHABET_LENGTH) {
       throw 'alphabet must contain at least $MIN_ALPHABET_LENGTH unique characters';
     }
 
-    if (alphabet.contains(' ')) {
+    if (alpha.contains(' ')) {
       throw 'alphabet cannot contains spaces';
     }
 
@@ -41,20 +40,20 @@ class HashIds {
     // alphabet should not contains seps
     String seps = DEFAULT_SEPS;
     for (int i = 0; i < seps.length; i++) {
-      final int j = alphabet.indexOf(seps[i]);
+      final int j = alpha.indexOf(seps[i]);
       if (j == -1) {
         seps = seps.substring(0, i) + ' ' + seps.substring(i + 1);
       } else {
-        alphabet = alphabet.substring(0, j) + ' ' + alphabet.substring(j + 1);
+        alpha = alpha.substring(0, j) + ' ' + alpha.substring(j + 1);
       }
     }
 
-    alphabet = alphabet.replaceAll(RegExp(r'\s+|\s'), '');
+    alpha = alpha.replaceAll(RegExp(r'\s+|\s'), '');
     seps = seps.replaceAll(' ', '');
-    seps = _consistentShuffle(seps, this.salt);
+    seps = _consistentShuffle(seps, salt);
 
-    if ((seps.isEmpty) || ((alphabet.length / seps.length) > SEP_DIV)) {
-      int sepsLen = (alphabet.length / SEP_DIV).ceil();
+    if ((seps.isEmpty) || ((alpha.length / seps.length) > SEP_DIV)) {
+      int sepsLen = (alpha.length / SEP_DIV).ceil();
 
       if (sepsLen == 1) {
         sepsLen++;
@@ -62,27 +61,27 @@ class HashIds {
 
       if (sepsLen > seps.length) {
         final int diff = sepsLen - seps.length;
-        seps += alphabet.substring(0, diff);
-        alphabet = alphabet.substring(diff);
+        seps += alpha.substring(0, diff);
+        alpha = alpha.substring(diff);
       } else {
         seps = seps.substring(0, sepsLen);
       }
     }
 
-    alphabet = _consistentShuffle(alphabet, this.salt);
+    alpha = _consistentShuffle(alpha, salt);
     // use double to round up
-    final int guardCount = (alphabet.length / GUARD_DIV).ceil();
+    final int guardCount = (alpha.length / GUARD_DIV).ceil();
 
     String guards;
-    if (alphabet.length < 3) {
+    if (alpha.length < 3) {
       guards = seps.substring(0, guardCount);
       seps = seps.substring(guardCount);
     } else {
-      guards = alphabet.substring(0, guardCount);
-      alphabet = alphabet.substring(guardCount);
+      guards = alpha.substring(0, guardCount);
+      alpha = alpha.substring(guardCount);
     }
     this.guards = guards;
-    this.alphabet = alphabet;
+    this.alphabet = alpha;
     this.seps = seps;
   }
 
@@ -99,11 +98,11 @@ class HashIds {
   static const double SEP_DIV = 3.5;
   static const int GUARD_DIV = 12;
 
-  String salt;
-  int minHashLength;
-  String alphabet;
-  String seps;
-  String guards;
+  late String salt;
+  late int minHashLength;
+  late String alphabet;
+  late String seps;
+  late String guards;
 
   /// Encodes int, String (with int), or list of ints
   String encode(dynamic number) {
@@ -138,7 +137,7 @@ class HashIds {
   /// Encode list of numbers
   ///
   String encodeList(List<int> numbers) {
-    if (numbers?.isEmpty ?? true) {
+    if (numbers.isEmpty) {
       return '';
     }
 
@@ -183,7 +182,7 @@ class HashIds {
             .allMatches(hex);
 
     for (var match in numbers) {
-      result.add(int.parse('1' + match.group(0), radix: 16));
+      result.add(int.parse('1' + match.group(0)!, radix: 16));
     }
 
     return encode(result);

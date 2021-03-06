@@ -22,8 +22,8 @@ void main() {
         'fffffffffffffffffffffffffffffffffffffffffffffffffffff'
   };
   group('encodeHex/decodeHex using custom params', () {
-    for (var id in map.keys) {
-      final hex = map[id];
+    for (final id in map.keys) {
+      final hex = map[id]!;
 
       test("should encode '0x${hex.toUpperCase()}' to '$id'", () {
         expect(id, equals(hashids.encodeHex(hex)));

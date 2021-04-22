@@ -12,10 +12,12 @@ import 'dart:core';
 /// ```
 /// {@end-tool}
 class HashIds {
-  HashIds(
-      {this.salt = DEFAULT_SALT,
-      int minHashLength = DEFAULT_MIN_HASH_LENGTH,
-      String alphabet = DEFAULT_ALPHABET}) {
+  HashIds({
+    this.salt = DEFAULT_SALT,
+    int minHashLength = DEFAULT_MIN_HASH_LENGTH,
+    String alphabet = DEFAULT_ALPHABET,
+    String seps = DEFAULT_SEPS,
+  }) {
     this.minHashLength =
         minHashLength > 0 ? minHashLength : DEFAULT_MIN_HASH_LENGTH;
 
@@ -38,7 +40,7 @@ class HashIds {
 
     // seps should contain only characters present in alphabet;
     // alphabet should not contains seps
-    String seps = DEFAULT_SEPS;
+    // String seps = DEFAULT_SEPS;
     for (int i = 0; i < seps.length; i++) {
       final int j = alpha.indexOf(seps[i]);
       if (j == -1) {
